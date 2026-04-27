@@ -1,0 +1,1050 @@
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+/* Container */
+.header-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo img {
+  height: 45px;
+}
+
+/* NAV */
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* Underline animation */
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #2c7a4b;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Remove underline from button */
+.nav .btn::after {
+  display: none !important;
+}
+
+/* CONTACT BUTTON */
+.btn {
+  background: #2c7a4b;
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 6px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.12);
+}
+
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+}
+
+/* SCROLLED HEADER */
+.header.scrolled {
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.header.scrolled .nav a {
+  color: #333;
+}
+
+.header.scrolled .menu-toggle {
+  color: #333;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: white;
+    display: none;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    padding: 20px;
+    gap: 18px;
+  }
+
+  .nav a {
+    color: #333;
+    font-size: 18px;
+  }
+
+  .nav.active {
+    display: block;
+  }
+}
+</style>
+
+<header class="header">
+  <div class="header-container">
+
+    <!-- Logo -->
+    <div class="logo">
+      <a href="/Home.html">
+        <img src="http://sacreddhara.local/wp-content/uploads/2026/04/ChatGPT-Image-Apr-23-2026-11_02_24-PM.png" alt="logo">
+
+      </a>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" id="navMenu">
+      <ul>
+        <li><a href="/Home.html">Home</a></li>
+        <li><a href="/About.html">About Us</a></li>
+        <li><a href="/Products.html">Products</a></li>
+        <li><a href="/Contact.html" class="btn">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hamburger -->
+    <div class="menu-toggle" id="menuToggle">☰</div>
+
+  </div>
+</header>
+
+<script>
+document.getElementById("menuToggle").onclick = function () {
+  document.getElementById("navMenu").classList.toggle("active");
+};
+
+/* Scroll effect */
+window.addEventListener("scroll", function () {
+  const header = document.querySelector(".header");
+  header.classList.toggle("scrolled", window.scrollY > 50);
+});
+</script>
+
+
+<style>
+.hero {
+  height: 100vh;
+  background: url('http://sacreddhara.local/wp-content/uploads/2026/04/shivam-baraik-AaEm_ksFEkY-unsplash-scaled.webp') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: flex-start;   /* 🔥 pushes content up */
+  justify-content: center;
+  padding-top: 60px;        /* 🔥 fine control */
+}
+
+/* Overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 50, 30, 0.4);
+}
+
+/* Logo in center */
+.hero-logo {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-logo img {
+  width: 400px;   /* bigger, more impactful */
+  max-width: 90%;
+  height: auto;
+  display:block;
+  margin: 0 auto;
+  animation: fadeIn 1.5s ease;
+}
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-logo img {
+    width: 220px;
+  }
+}
+
+/* .hero-tagline {
+  margin-top: -15px;        
+  font-size: 60px;        
+  font-weight: 600;
+  color: #ffffff;         
+  text-align: center;
+  letter-spacing: 0.5px;
+  animation: fadeInUp 1.5s ease;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+} */
+
+
+.hero-tagline {
+  margin-top: -10px;
+  font-size: 48px;              /* balanced size */
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1.2;
+
+  /* 🔥 Premium glow */
+  text-shadow: 
+    0 4px 20px rgba(0,0,0,0.7),
+    0 2px 8px rgba(0,0,0,0.5);
+
+  /* Animation */
+  animation: fadeInUp 1.5s ease;
+}
+
+
+
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-tagline {
+    font-size: 80px;
+    margin-top: 8px;
+    padding: 0 10px;
+  }
+}
+
+</style>
+
+<section class="hero">
+  <div class="hero-logo">
+    <img src="http://sacreddhara.local/wp-content/uploads/2026/04/ChatGPT-Image-Apr-23-2026-11_02_24-PM.png" alt="Sacred Dhara Logo">
+    <p class="hero-tagline">Where Devotion Meets Sustainability</p>
+  </div>
+</section>
+
+<style>
+.feature-section {
+  padding: 100px 20px;
+  background: #ffffff;
+}
+
+.feature-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+/* BRAND TITLE */
+.brand-title {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-family: 'Georgia', serif;  /* serif like logo */
+}
+
+.brand-title .sacred {
+  color: #2c7a4b;   /* green */
+}
+
+.brand-title .dhara {
+  color: #e6952a;   /* orange */
+}
+
+/* TEXT */
+.feature-text {
+  flex: 1;
+}
+
+.feature-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* CARDS */
+.feature-cards {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .feature-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .feature-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-title {
+    font-size: 34px;
+  }
+}
+</style>
+
+<section class="feature-section">
+  <div class="feature-container">
+
+    <!-- LEFT -->
+    <div class="feature-text">
+      
+      <h2 class="brand-title">
+        <span class="sacred">Sacred</span> 
+        <span class="dhara">Dhara</span>
+      </h2>
+
+      <p>
+        We collect the sacred materials offered in temples and rivers of Haridwar with deep reverence.
+        Our mission is to ensure that these offerings, rich with devotion, are treated with the dignity they deserve — and returned to nature responsibly.
+      </p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="feature-cards">
+      <div class="card">Daily Ritual Offerings</div>
+      <div class="card">Sacred Temple Materials</div>
+      <div class="card">Riverbed Stewardship</div>
+      <div class="card">Honoring Every Grain</div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.merged-section {
+  padding: 100px 20px;
+  background: #f4f8f6;
+}
+
+/* HEADING */
+.merged-heading {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 700;
+  color: #2c7a4b;
+  margin-bottom: 60px;
+  font-family: 'Georgia', serif;
+}
+
+/* CONTAINER */
+.merged-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+/* IMAGE */
+.merged-image {
+  flex: 1.3;
+}
+
+.merged-image img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* TEXT */
+.merged-text {
+  flex: 1;
+}
+
+.merged-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+/* HIGHLIGHT */
+.highlight {
+  font-weight: 600;
+  color: #2c7a4b;
+}
+
+/* 🔥 SCROLL ANIMATION INITIAL STATE */
+.merged-heading,
+.merged-container {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+/* 🔥 WHEN VISIBLE */
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .merged-heading {
+    font-size: 32px;
+  }
+
+  .merged-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .merged-text p {
+    font-size: 16px;
+  }
+}
+</style>
+
+<section class="merged-section">
+
+  <!-- HEADING -->
+  <h2 class="merged-heading">The Silent Imbalance</h2>
+
+  <div class="merged-container">
+
+    <!-- LEFT IMAGE -->
+    <div class="merged-image">
+      <img src="http://sacreddhara.local/wp-content/uploads/2026/04/jyoti-singh-t1TTPrKznH8-unsplash-scaled.jpg" alt="River and offerings">
+    </div>
+
+    <!-- RIGHT TEXT -->
+    <div class="merged-text">
+      <p>
+        Every day, offerings are made with shraddha and bhakti in our temples and sacred rivers. 
+        Yet, without mindful care, even shuddh sankalp can disturb prakriti, and the many jeevs within.
+        Dharma reminds us — all of creation is sacred.
+      </p>
+
+      <p>
+        These offerings, though shuddh in sankalp, when left without proper maryada and samvedana,
+        can disturb natural harmony.
+      </p>
+
+      <p>
+        Dharma teaches us that all of creation is sacred.
+        Our devotion must align with this truth — it should poshan (nurture), not ahimsa (harm).
+      </p>
+
+      <p>
+        Let our bhakti be guided by wisdom, so that it preserves both the divine and the world that sustains it.
+      </p>
+
+      <p class="highlight">
+        Devotion should nurture, not harm.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+document.querySelectorAll('.merged-heading, .merged-container')
+  .forEach(el => observer.observe(el));
+</script>
+
+
+<style>
+.soul-section {
+  padding: 70px 20px;
+  background: #eefaf5;   /* soft mint background */
+  text-align: center;
+}
+
+/* HEADING */
+.soul-heading {
+  font-size: 42px;
+  color: #2c7a4b;
+  margin-bottom: 20px;
+  font-family: 'Georgia', serif;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+/* TEXT */
+.soul-text {
+  max-width: 800px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #4fd1a5;
+  margin-bottom: 50px;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+/* CARDS */
+.soul-cards {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.soul-card {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+  min-width: 200px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.soul-card:hover {
+  transform: translateY(-5px);
+}
+
+/* SHOW ANIMATION */
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .soul-heading {
+    font-size: 30px;
+  }
+
+  .soul-text {
+    font-size: 16px;
+  }
+}
+</style>
+
+<section class="soul-section">
+
+  <!-- HEADING -->
+  <h2 class="soul-heading">For Every Silent Soul</h2>
+
+  <!-- TEXT -->
+  <p class="soul-text">
+    Our work extends beyond water. We support animals, nurture plant life,
+    and promote a way of living where compassion includes all living beings.
+  </p>
+
+  <!-- CARDS -->
+  <div class="soul-cards">
+    <div class="soul-card">Care for Animals</div>
+    <div class="soul-card">Nurturing Plant Life</div>
+    <div class="soul-card">Respect for Nature</div>
+    <div class="soul-card">Compassion for All Beings</div>
+  </div>
+
+</section>
+
+<script>
+const soulObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.soul-heading, .soul-text, .soul-cards')
+  .forEach(el => soulObserver.observe(el));
+</script>
+
+
+<style>
+.image-section {
+  padding: 60px 20px;
+  background: #f4f8f6;
+}
+
+.image-container {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Each image box */
+.image-box {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Image */
+.image-box img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Hover effect */
+.image-box:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .image-container {
+    flex-direction: column;
+  }
+
+  .image-box img {
+    height: 250px;
+  }
+}
+</style>
+
+<section class="image-section">
+  <div class="image-container">
+
+    <!-- IMAGE 1 -->
+    <div class="image-box">
+      <img src="http://sacreddhara.local/wp-content/uploads/2026/04/photo-1758599669008-fb6f8eda6f53.webp" alt="Sacred offerings">
+    </div>
+
+    <!-- IMAGE 2 -->
+    <div class="image-box">
+      <img src="http://sacreddhara.local/wp-content/uploads/2026/04/ChatGPT-Image-Apr-25-2026-08_09_55-PM.webp" alt="Ganga river">
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+.solution-section {
+  padding: 100px 20px;
+  background: #ffffff;
+  text-align: center;
+}
+
+/* HEADING */
+.solution-heading {
+  font-size: 42px;
+  color: #2c7a4b;
+  margin-bottom: 20px;
+  font-family: 'Georgia', serif;
+}
+
+/* TEXT */
+.solution-text {
+  max-width: 800px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 50px;
+}
+
+/* STEPS */
+.solution-steps {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.step {
+  background: #f4f8f6;
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 250px;
+  font-weight: 500;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+/* CTA */
+.cta-box {
+  background: linear-gradient(to right, #2c7a4b, #1f5e3a);
+  padding: 50px 30px;
+  border-radius: 16px;
+  color: white;
+  max-width: 900px;
+  margin: auto;
+}
+
+.cta-heading {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.cta-text {
+  font-size: 16px;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+/* BUTTON */
+.cta-btn {
+  display: inline-block;
+  background: white;
+  color: #2c7a4b;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: scale(1.08);
+}
+
+/* SCROLL ANIMATION */
+.solution-heading,
+.solution-text,
+.solution-steps,
+.cta-box {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .solution-heading {
+    font-size: 30px;
+  }
+
+  .solution-text {
+    font-size: 16px;
+  }
+
+  .step {
+    width: 100%;
+  }
+}
+</style>
+
+<section class="solution-section">
+
+  <!-- HEADING -->
+  <h2 class="solution-heading">Our Approach</h2>
+
+  <!-- TEXT -->
+  <p class="solution-text">
+    Sacred Dhara creates a mindful cycle where devotion does not end at the ritual.
+    We respectfully collect, process, and return sacred materials to nature in a way that preserves both dignity and ecological balance.
+  </p>
+
+  <!-- STEPS -->
+  <div class="solution-steps">
+    <div class="step">Collection of Sacred Offerings</div>
+    <div class="step">Respectful Processing</div>
+    <div class="step">Eco-Friendly Reintegration</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <div class="cta-heading">Be a Part of the Change</div>
+    <div class="cta-text">
+      Join us in transforming devotion into a force for sustainability.
+    </div>
+    <a href="#" class="cta-btn">Explore Sacred Dhara →</a>
+  </div>
+
+</section>
+
+<script>
+const solutionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.solution-heading, .solution-text, .solution-steps, .cta-box')
+  .forEach(el => solutionObserver.observe(el));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer -->
+ <style>
+.footer {
+  background: #0f2e24;
+  color: #d1e7dd;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* COLUMN */
+.footer-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* LOGO */
+.footer-logo img {
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+/* TEXT */
+.footer-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #a8cfc0;
+}
+
+/* HEADINGS */
+.footer-col h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+/* LINKS */
+.footer-links a {
+  display: block;
+  text-decoration: none;
+  color: #a8cfc0;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #4fd1a5;
+}
+
+/* CONTACT */
+.footer-contact p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* SOCIAL */
+.footer-social a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 18px;
+  color: #a8cfc0;
+  transition: color 0.3s;
+}
+
+.footer-social a:hover {
+  color: #4fd1a5;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #8fb9a9;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-social a {
+    margin: 0 8px;
+  }
+}
+</style>
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- LOGO + ABOUT -->
+    <div class="footer-col">
+      <div class="footer-logo">
+        <img src="http://sacreddhara.local/wp-content/uploads/2026/04/ChatGPT-Image-Apr-23-2026-11_02_24-PM.png" alt="Sacred Dhara">
+      </div>
+      <div class="footer-text">
+        Sacred Dhara is dedicated to preserving the sanctity of devotion while protecting nature and all living beings.
+      </div>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <div class="footer-links">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About Us</a>
+        <a href="Products.html">Products</a>
+        <a href="Contact.html">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <div class="footer-contact">
+        <p>Email: info@sacreddhara.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Location: Haridwar, India</p>
+      </div>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="footer-col">
+      <h3>Follow Us</h3>
+      <div class="footer-social">
+        <a href="#">🌿</a>
+        <a href="#">🌊</a>
+        <a href="#">📷</a>
+        <a href="#">▶️</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    © 2026 Sacred Dhara. All rights reserved.
+  </div>
+
+</footer>

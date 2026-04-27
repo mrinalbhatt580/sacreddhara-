@@ -1,0 +1,630 @@
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  background: #ffffff;   /* 🔥 always white for inner pages */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* CONTAINER */
+.header-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.logo img {
+  height: 45px;
+}
+
+/* NAV */
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* Underline animation */
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #2c7a4b;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Remove underline from button */
+.nav .btn::after {
+  display: none !important;
+}
+
+/* CONTACT BUTTON */
+.btn {
+  background: #2c7a4b;
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 6px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.12);
+}
+
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: white;
+    display: none;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    padding: 20px;
+    gap: 18px;
+  }
+
+  .nav a {
+    color: #333;
+    font-size: 18px;
+  }
+
+  .nav.active {
+    display: block;
+  }
+}
+</style>
+
+<header class="header">
+  <div class="header-container">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <a href="#">
+        <img src="http://sacreddhara.local/wp-content/uploads/2026/04/ChatGPT-Image-Apr-23-2026-11_02_24-PM.png" alt="Sacred Dhara">
+      </a>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" id="navMenu">
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About.html">About Us</a></li>
+        <li><a href="Products.html">Products</a></li>
+        <li><a href="Contact.html" class="btn">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- HAMBURGER -->
+    <div class="menu-toggle" id="menuToggle">☰</div>
+
+  </div>
+</header>
+
+<script>
+document.getElementById("menuToggle").onclick = function () {
+  document.getElementById("navMenu").classList.toggle("active");
+};
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.products-hero {
+  padding: 160px 20px 100px;
+  background: linear-gradient(to bottom, #ffffff, #f4f8f6);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* SUBTLE GLOW EFFECT */
+.products-hero::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(44,122,75,0.15), transparent);
+  top: -100px;
+  left: -100px;
+  filter: blur(80px);
+}
+
+/* HEADING */
+.products-heading {
+  font-size: 48px;
+  color: #2c7a4b;
+  margin-bottom: 18px;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1px;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+/* SUBTEXT */
+.products-subtext {
+  font-size: 18px;
+  color: #555;
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.7;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+/* SHOW ANIMATION */
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .products-heading {
+    font-size: 32px;
+  }
+
+  .products-subtext {
+    font-size: 16px;
+  }
+}
+</style>
+
+<section class="products-hero">
+  <h2 class="products-heading">Our Products</h2>
+  <p class="products-subtext">
+    Thoughtfully created from sacred offerings, with care for nature and devotion.
+  </p>
+</section>
+
+<script>
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.products-heading, .products-subtext')
+  .forEach(el => heroObserver.observe(el));
+</script>
+
+
+
+
+
+
+
+
+<style>
+.products-section {
+  padding: 120px 20px;
+  background: linear-gradient(to bottom, #ffffff, #f4f8f6);
+}
+
+.products-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* GRID */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+}
+
+/* CARD */
+.product-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  overflow: hidden;
+
+  border: 1px solid rgba(44,122,75,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+  transform: translateY(40px);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+/* SHOW ANIMATION */
+.product-card.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* IMAGE */
+.product-img {
+  overflow: hidden;
+}
+
+.product-img img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* CONTENT */
+.product-content {
+  padding: 22px;
+}
+
+.product-title {
+  font-size: 20px;
+  color: #2c7a4b;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.product-desc {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+/* BUTTON */
+.product-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  background: #2c7a4b;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(44,122,75,0.15);
+}
+
+.product-card:hover img {
+  transform: scale(1.08);
+}
+
+.product-btn:hover {
+  transform: scale(1.08);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<section class="products-section">
+
+  <div class="products-container">
+
+    <div class="products-grid">
+
+      <!-- PRODUCT -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="">
+        </div>
+        <div class="product-content">
+          <div class="product-title">Sacred Incense</div>
+          <div class="product-desc">Made from recycled temple flowers, pure and natural.</div>
+          <a href="#" class="product-btn">View Product</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <img src="">
+        </div>
+        <div class="product-content">
+          <div class="product-title">Organic Compost</div>
+          <div class="product-desc">Nutrient-rich compost created from sacred offerings.</div>
+          <a href="#" class="product-btn">View Product</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <img src="">
+        </div>
+        <div class="product-content">
+          <div class="product-title">Natural Colors</div>
+          <div class="product-desc">Eco-friendly colors derived from temple flowers.</div>
+          <a href="#" class="product-btn">View Product</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <img src="">
+        </div>
+        <div class="product-content">
+          <div class="product-title">Herbal Dhoop</div>
+          <div class="product-desc">Handcrafted dhoop sticks for peaceful rituals.</div>
+          <a href="#" class="product-btn">View Product</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <img src="">
+        </div>
+        <div class="product-content">
+          <div class="product-title">Eco Diyas</div>
+          <div class="product-desc">Biodegradable diyas made from natural materials.</div>
+          <a href="#" class="product-btn">View Product</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <img src="">
+        </div>
+        <div class="product-content">
+          <div class="product-title">Sacred Powder</div>
+          <div class="product-desc">Traditional powder created from temple residues.</div>
+          <a href="#" class="product-btn">View Product</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+const productObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.product-card')
+  .forEach(el => productObserver.observe(el));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer -->
+ <style>
+.footer {
+  background: #0f2e24;
+  color: #d1e7dd;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* COLUMN */
+.footer-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+/* LOGO */
+.footer-logo img {
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+/* TEXT */
+.footer-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #a8cfc0;
+}
+
+/* HEADINGS */
+.footer-col h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+/* LINKS */
+.footer-links a {
+  display: block;
+  text-decoration: none;
+  color: #a8cfc0;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #4fd1a5;
+}
+
+/* CONTACT */
+.footer-contact p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* SOCIAL */
+.footer-social a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 18px;
+  color: #a8cfc0;
+  transition: color 0.3s;
+}
+
+.footer-social a:hover {
+  color: #4fd1a5;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: #8fb9a9;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-social a {
+    margin: 0 8px;
+  }
+}
+</style>
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- LOGO + ABOUT -->
+    <div class="footer-col">
+      <div class="footer-logo">
+        <img src="http://sacreddhara.local/wp-content/uploads/2026/04/ChatGPT-Image-Apr-23-2026-11_02_24-PM.png" alt="Sacred Dhara">
+      </div>
+      <div class="footer-text">
+        Sacred Dhara is dedicated to preserving the sanctity of devotion while protecting nature and all living beings.
+      </div>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <div class="footer-links">
+        <a href="Home.html">Home</a>
+        <a href="About.html">About Us</a>
+        <a href="Products.html">Products</a>
+        <a href="Contact.html">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <div class="footer-contact">
+        <p>Email: info@sacreddhara.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Location: Haridwar, India</p>
+      </div>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="footer-col">
+      <h3>Follow Us</h3>
+      <div class="footer-social">
+        <a href="#">🌿</a>
+        <a href="#">🌊</a>
+        <a href="#">📷</a>
+        <a href="#">▶️</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    © 2026 Sacred Dhara. All rights reserved.
+  </div>
+
+</footer>
